@@ -19,7 +19,10 @@ AR.Run()
 from Utils import Image_Matrix
 Image_Matrix(2, 4)
 ```
-![图片描述](test_utils/image-matrix.png)
+上面的代码可以得到下图中的应用，可以通过`Add Image`按钮添加图像并通过`Show All Images`按钮进行统一展示。`Scale Factor`是一个自动确定的缩放因子。
+
+![](test_utils/image-matrix.png)
+
 4. `Utils/Make_Results.py`中中的`Make_Results`类可以自动化整理`test_utils/Analysis`中的实验结果
 ```python
 from Utils import Make_Results
@@ -32,10 +35,33 @@ MR = Make_Results(
     datasets=["CMNIST", "TMNIST"]
 )
 MR.make()
+MT = Make_Table()
+xlsx_list = [item for item in os.listdir(MR.result_file) if item.endswith(".xlsx")]
+for xlsx in xlsx_list:
+    MT.Make(os.path.join(MR.result_file, xlsx))
 ```
+
 5. `Utils/MakeTable.py`中包含了一个自动化制作三线表的Python类，主要功能如下：
 - 制作三线表；
 - 加粗第一行和第一列；
 - 加粗每一列的最大值；
 - 设置字体为Times New Roman
 - 以4位小数显示数字
+可以通过下面的代码进行自动排版：
+```python
+from Utils import Make_Table
+m = ["GLPP", "GKDA"]
+MT = Make_Table(methods=m)
+MT.Make("ACC.xlsx")
+```
+6. `Send/SendMail.py`文件中的`Auto_Email`类可以自动在实验过程中自动发送通知
+7. `Send/utils.py`文件中的`check_Internet`函数可以检查当前设备的网络状态
+8. 可以在`Send/config.py`文件中设置发送和接收通知的邮箱号
+```python
+from Send import Auto_Email
+from Send import check_Internet
+if check_Internet(lock=False):
+    AS = Auto_Email(subject="项目开始通知")
+    # AS.Send_txt(txt="项目开始运行！")
+```
+9. `test_utils/test_utils.ipynb`文件展示了一些案例
