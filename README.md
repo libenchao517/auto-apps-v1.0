@@ -45,8 +45,9 @@ for xlsx in xlsx_list:
 - 制作三线表；
 - 加粗第一行和第一列；
 - 加粗每一列的最大值；
-- 设置字体为Times New Roman
-- 以4位小数显示数字
+- 设置字体为Times New Roman；
+- 以4位小数显示数字；
+
 可以通过下面的代码进行自动排版：
 ```python
 from Utils import Make_Table
@@ -54,7 +55,7 @@ m = ["GLPP", "GKDA"]
 MT = Make_Table(methods=m)
 MT.Make("ACC.xlsx")
 ```
-6. `Send/SendMail.py`文件中的`Auto_Email`类可以自动在实验过程中自动发送通知
+6. `Send/SendMail.py`文件中的`Auto_Email`类可以自动在实验过程中发送开始或结束通知
 7. `Send/utils.py`文件中的`check_Internet`函数可以检查当前设备的网络状态
 8. 可以在`Send/config.py`文件中设置发送和接收通知的邮箱号
 ```python
