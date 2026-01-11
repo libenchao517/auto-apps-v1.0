@@ -1,5 +1,6 @@
-# auto-app-v1.0
-本项目中包含了一些自动化运行项目代码的Python类。
+# auto-app
+auto-app中包含了一些自动化运行项目代码的Python类。
+
 1. `Utils/AutoRun.py`中的 `Auto_Run`类是一个可以自动化运行某个文件夹下的单个或多个`.py`文件，下面这段代码可以自动运行文件夹`UMAP/Basic`在的所有`.py`文件，并通过文件`Make_Results_UMAP.py`整理实验结果。
 ```python
 from Utils import Auto_Run
